@@ -1,6 +1,26 @@
 # DKO - Data Structures and Algorithms in Java
 
-I started this mainly for myself but for others to learn data structures and algorithms. We'll be diving in with Java, so sit back, enjoy, and feel free to follow along.
+I started this mainly for myself but for others to learn data structures and algorithms. We'll be diving in with Java, so sit back, enjoy, and feel free to follow along (you probably should).
+
+### Why follow along
+
+Learning to code can be challenging. I remember feeling the need to know everything. You know what I mean - the Tutorial HELL TRAP. And while a broad understanding is helpful, I often learned the most when diving into projects that intrigued me. However, it wasn't smooth sailing. In the beginning, I struggled because I didn't fully grasp the importance of DSA. Correction - I didn't know what DSA was. "Projects" after unfinished projects, I struggled to apply basic methods of programming.
+
+Ever wondered about these situations?
+
+- How do e-commerce applications quickly find a product by its ID? Could using hash tables be more efficient than arrays?
+- Ever thought about how social networks like Facebook or LinkedIn manage user connections? What role do graph data structures and traversal algorithms play in finding mutual friends?
+- Why do websites load faster on your second visit? Could this be due to efficient caching using doubly linked lists or hash maps?
+
+You get the point. We'll explore various concepts, but remember, it's more about gradually mastering these concepts over time.
+
+I guarantee making programs will be much more fun as you learn more concepts.
+
+Tips:
+
+1. Engage actively with the material. Don't just copy codes; use ChatGPT / Google to challenge yourself with questions and as for "real world" examples to apply DSA concepts. AI is a game-changer buddy.
+2. Remember, learning is a marathon, not a sprint. Set realistic goals and pace yourself. You'll be learning fast at first but don't expect to me learning 8 lessons a day. It's going to slow down so don't be disappointed. Even 1-2 concepts/day is FINE!
+3. Let's stop talking and start doing!
 
 FYI: I'll be using VSCode on a Macbook (Apple Silicon chip).
 
@@ -39,7 +59,7 @@ FYI: I'll be using VSCode on a Macbook (Apple Silicon chip).
 
 ## Introduction to Java
 
-I chose Java as the language for this course because of its unique balance between performance and usability. Unlike C, Java offers a more forgiving and intuitive programming environment, which is excellent for beginners.
+I chose Java because of its unique balance between performance and usability. Unlike C, Java offers a more forgiving and intuitive programming environment, which is excellent for beginners. But honestly, I'm using Java because I wanna. You think it's a joke, huh?
 
 ### Setting up Java Environment
 
@@ -73,7 +93,7 @@ The JDK? That's your toolbox. It has all the tools (like a compiler and librarie
 
    ```java
    // This is how you create a comment
-   // Main Class
+   // Main Class (*** make sure HelloWorld matches your file name HelloWorld.java ***)
    public class HelloWorld {
 
        // Driver Code
@@ -302,7 +322,7 @@ Deleting 'B':
 +---+---+---+
 | A | C | D |
 +---+---+---+
-        ←
+    ←
 Elements shifted left
 ```
 
@@ -332,7 +352,7 @@ Deleting 'B':
 +---+             +---+
 | A | ----------> | C |
 +---+             +---+
-          ↑
+           ↑
    'B' is bypassed
 ```
 
@@ -383,3 +403,103 @@ Output in logical order:
 [Charlie, Taylor]
 [Charlie]
 ```
+
+Keep in mind, Linked Lists are good for implementing basic **Searching Algorithms** like **Linear Search**, but are not very efficient for **Sorting Algorithms**, since sorting algorithms require a lot of back-and-forth traversal and linked lists do not support indexing. However, linked lists are used in some recursive sorting algorithms like **Merge Sort**
+
+Now let's move on.
+
+### Stacks (LIFO)
+
+Think of a stack like a stack of books. Books are added to the top and taken from the top. In computer science, we call this LIFO, Last In, First Out.
+
+Here's what that looks like visually:
+
+```
+Initial Stack:
++---+
+| D | <- Top
++---+
+| C |
++---+
+| B |
++---+
+| A |
++---+
+Bottom
+```
+
+When you add (push) a new book 'E' to the stack:
+
+```
+Stack.push("E"):
++---+
+| E | <- Top (Newly added)
++---+
+| D |
++---+
+| C |
++---+
+| B |
++---+
+| A |
++---+
+Bottom
+```
+
+When you take (pop) a plate off the stack:
+
+```
+Stack.pop("E")
++---+
+| D | <- Top (Now at the top after 'E' was removed)
++---+
+| C |
++---+
+| B |
++---+
+| A |
++---+
+Bottom
+```
+
+Stacks are again part of the `java.util` package, similar to LinkedLists. Let's see how we code a Stack:
+
+```java
+import java.util.Stack;
+
+public class StackExample {
+
+    public static void main(String[] args) {
+        Stack<String> stack = new Stack<>();
+
+        // push/add elements on top
+        stack.push("First");
+        stack.push("Second");
+        stack.push("Third");
+
+        // "peek at the top element"
+        stack.peek();
+
+        // pop/remove elements on top
+        stack.pop();
+    }
+}
+```
+
+Output:
+
+```
+[First]
+[First, Second]
+[First, Second, Third]
+Third
+[First, Second]
+```
+
+While linked lists can handle basic Searching Algorithms like Linear Search and are particularly useful in recursive Sorting Algorithms like Merge Sort, stacks serve a different purpose.
+
+Comparing stacks to linked lists is like comparing a straight path to a two-way street. While linked lists give you the freedom to hop on and off at any point, stacks are all about the discipline of order: the last thing you put in is always the first one out (LIFO principle) which doesn't allow for random access in the way linked lists do.
+
+However, stacks are incredibly useful for managing function calls in recursion, for parsing expressions in compilers, and for implementing depth-first search (DFS) algorithms in graph processing. They excel in environments where the most recent data needs to be accessed first, contrasting with linked lists that allow sequential access and are flexible with insertions and deletions at any point.
+
+### Queues (FIFO)

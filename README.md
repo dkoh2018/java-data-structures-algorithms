@@ -36,12 +36,6 @@ FYI: I'll be using VSCode on a Macbook (Apple Silicon chip).
 - [Advanced Concepts](#advanced-concepts)
   - [Recursion](#recursion)
   - [Divide and Conquer](#divide-and-conquer)
-  - [Special Topics in Algorithms](#special-topics-in-algorithms)
-    - [Jump Search](#jump-search)
-    - [Interpolation Search](#interpolation-search)
-- [Consolidation and Advanced Studies](#consolidation-and-advanced-studies)
-- [Resources](#resources)
-- [Contributing](#contributing)
 
 ## Introduction to Java
 
@@ -183,11 +177,26 @@ class ArrayExample {
 }
 ```
 
+Output:
+
+```
+Element at index 0: 100
+Element at index 1: 200
+Element at index 2: 300
+Element at index 3: 400
+Element at index 4: 500
+Element at index 5: 600
+Element at index 6: 700
+Element at index 7: 800
+Element at index 8: 900
+Element at index 9: 1000
+```
+
 However, this current code is a bit inefficient and unnecessarily cluttered. We could avoid wasting time and tidy up our code by refraining from writing repetitive lines. This brings us to our next valuable lesson - Loops.
 
 ### Loops
 
-Mastering loops is fundamental to thinking and programming efficiently. Doing so saves time as loops handle repetitive tasks flexibly without the need for lengthy copy-and-paste code. With that in mind, we're going to quickly explore three types of loops:
+Mastering loops is **fundamental** to thinking and programming efficiently (like a lot...). Doing so saves time as loops handle repetitive tasks flexibly without the need for lengthy copy-and-paste code. With that in mind, we're going to quickly explore three types of loops:
 
 1. For loops
 2. While loops
@@ -196,13 +205,15 @@ Do some digging on loops when you get a chance; there's quite a few variations o
 
 Now, coming to the examples:
 
+Set up an 'ArrayExample' class. This will initialize and interact with an array. I've prepared an integer array with ten slots reserved, and in the commented section, 'Insert Loop codes here'.
+
 ```java
 class ArrayExample {
     public static void main(String[] args) {
         int[] Array;
         Array = new int[10];
 
-        // Insert Loop codes here
+        // <Insert Loop codes here>
     }
 }
 ```
@@ -229,7 +240,22 @@ while (i < Array.length) {
 }
 ```
 
-While arrays are powerful in their simplicity and direct access, they come with limitations, particularly in their fixed size and the complexity involved in inserting or deleting elements. To address these limitations, let's explore another fundamental data structure: Linked Lists.
+Both Outputs:
+
+```
+Element at index 0: 100
+Element at index 1: 200
+Element at index 2: 300
+Element at index 3: 400
+Element at index 4: 500
+Element at index 5: 600
+Element at index 6: 700
+Element at index 7: 800
+Element at index 8: 900
+Element at index 9: 1000
+```
+
+Although arrays are powerful in their simplicity and direct access, they come with limitations, particularly in their fixed size and the complexity involved in inserting or deleting elements. To address these limitations, let's explore another fundamental data structure: Linked Lists.
 
 ### Linked Lists
 
@@ -244,21 +270,66 @@ On the flip side:
 - **Increased Memory**: Nodes consume extra memory due to data and pointer storage.
 - **Sequential Access**: Direct element access is not possible; traversal from the start is required.
 
-Let's see how we can implement a Singly Linked List.
+So, we've looked at the characteristics of linked lists, but what does this all mean in practice? Imagine a toy train set.
 
-This is a a single element or Node of the linked list.
+**Arrays** are like a train with tightly coupled cars. Adding or removing cars (or elements) in the middle is a pain in the butt - you have to disconnect and move all subsequent cars. It's efficient when working with data en masse, but individual modifications can be taxing.
 
-```java
-class Node {
-    int data;
-    Node next;
+```
+Before Insertion:
++---+---+---+---+
+| A | B | C | D |
++---+---+---+---+
 
-    public Node(int data) {
-        this.data = data;
-        this.next = null;
-    }
-}
+Inserting 'X' at index 2:
++---+---+---+---+---+
+| A | B | X | C | D |
++---+---+---+---+---+
+       ↑
+Elements shifted right
 ```
 
-- `int data`: Stores the data value.
-- `Node next`: Referencing the next node in the list.
+```
+Before Deletion:
++---+---+---+---+
+| A | B | C | D |
++---+---+---+---+
+
+Deleting 'B':
++---+---+---+
+| A | C | D |
++---+---+---+
+       ←
+Elements shifted left
+```
+
+**Linked Lists**, on the other hand, function like a train with easily detachable cars. Each car (or Node) hooks onto the next, allowing us to seamlessly insert or remove cars in the middle without disrupting the entire setup. This offers greater ease and efficiency when changing single elements, making Linked Lists a more flexible alternative for specific tasks.
+
+```
+Before Insertion:
++---+    +---+    +---+
+| A | -> | B | -> | D |
++---+    +---+    +---+
+
+Inserting 'C' after 'B':
++---+    +---+    +---+    +---+
+| A | -> | B | -> | C | -> | D |
++---+    +---+    +---+    +---+
+                ↑
+Only pointers updated
+```
+
+```
+Before Deletion:
++---+    +---+    +---+
+| A | -> | B | -> | C |
++---+    +---+    +---+
+
+Deleting 'B':
++---+             +---+
+| A | ----------> | C |
++---+             +---+
+       ↑
+'B' is bypassed
+```
+
+This simplicity and flexibility are exactly why we use linked lists in programming when we expect to add or remove a lot of items. But how do we create a linked list in Java? That's where the concept of 'importing packages' comes into play.

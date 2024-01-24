@@ -18,7 +18,7 @@ I guarantee making programs will be much more fun as you learn more concepts.
 
 Tips:
 
-1. Engage actively with the material. Don't just copy codes; use ChatGPT / Google to challenge yourself with questions and as for "real world" examples to apply DSA concepts. AI is a game-changer buddy.
+1. Engage actively with the material. Don't just copy codes because that doesn't do ANYTHING for you; use ChatGPT / Google to challenge yourself with questions and ask for "real world" examples to apply DSA concepts. AI is a game-changer buddy.
 2. Remember, learning is a marathon, not a sprint. Set realistic goals and pace yourself. You'll be learning fast at first but don't expect to me learning 8 lessons a day. It's going to slow down so don't be disappointed. Even 1-2 concepts/day is FINE!
 3. Let's stop talking and start doing!
 

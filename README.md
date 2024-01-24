@@ -26,16 +26,16 @@ FYI: I'll be using VSCode on a Macbook (Apple Silicon chip).
 
 ## Table of Contents
 
-- [Introduction to Java](#getting-started-with-java)
-  - [Setting up Java Environment](#settingupjavaenvironmnet)
-  - [Write Your First Java Program](#WriteYourFirstJavaProgram)
+- [Introduction to Java](#introduction-to-java)
+  - [Setting up Java Environment](#setting-up-java-environment)
+  - [Write Your First Java Program](#write-your-first-java-program)
 - [Fundamentals of Data Structures](#fundamentals-of-data-structures)
-  - [Big O-notation](#bigonotation)
+  - [Big O Notation (MUST KNOW)](#big-o-notation-must-know)
   - [Arrays](#arrays)
   - [Loops](#loops)
   - [Linked Lists](#linked-lists)
-  - [Stacks](#stacks)
-  - [Queues](#queues)
+  - [Stacks (LIFO)](#stacks-lifo)
+  - [Queues (FIFO)](#queues-fifo)
 - [Basic Algorithms](#basic-algorithms)
   - [Searching Algorithms](#searching-algorithms)
     - [Linear Search](#linear-search)
@@ -229,10 +229,10 @@ Do some digging on loops when you get a chance; there's quite a few variations o
 
 Now, coming to the examples:
 
-Set up an 'ArrayExample' class. This will initialize and interact with an array. I've prepared an integer array with ten slots reserved, and in the commented section, 'Insert Loop codes here'.
+Make your 'ArrayExample' class and driver code. This will initialize and interact with an array. I've prepared an integer array with ten slots reserved, and in the commented section, 'Insert Loop codes here'.
 
 ```java
-class ArrayExample {
+public class ArrayExample {
     public static void main(String[] args) {
         int[] Array;
         Array = new int[10];
@@ -365,43 +365,67 @@ I suggest you skimming through [Package `java.util`](https://docs.oracle.com/jav
 Anyways, let's get straight into Linked Lists:
 
 ```java
-// import LinkedList
+// Skim, then practice. Make your own examples
+
+// Add end = .add()
+// Add beginning = .addFirst()
+// Add last = .addLast()
+// Add specific = .add(2, "Pat")
+// Remove first occurrence = .remove()
+// Remove specific = .remove(2)
+// Remove first = .removeFirst()
+// Remove last = .removeLast()
+// Contains an element = .contains()
+// Get size of list = .size()
+// Check if empty = .isEmpty()
+// Get first non-empty element = .getFirst()
+
 import java.util.LinkedList;
 
 public class LinkedListExample {
     public static void main(String args[]) {
-        // Create LinkedList of String type
-        LinkedList<String> ll = new LinkedList<String>();
+        LinkedList<String> phoneBook = new LinkedList<String>();
 
-        // add elements
-        friendsList.add("Charlie");
-        friendsList.add("Sam");
-        friendsList.addFirst("Alex");
-        friendsList.addLast("Taylor");
-        friendsList.add(2, "Pat");
 
-        // remove elements
-        friendsList.remove("Pat");
-        friendsList.remove(2);
-        friendsList.removeFirst();
-        friendsList.removeLast();
+        phoneBook.add("Pat");
+        phoneBook.add("Charlie");
+        phoneBook.add("Sam");
+        phoneBook.addFirst("Alex");
+        phoneBook.addLast("Taylor");
+        phoneBook.add(4, "Pat");
+        System.out.println("List after additions: " + phoneBook);
 
+        phoneBook.remove("Pat");
+        phoneBook.remove(2);
+        phoneBook.removeFirst();
+        phoneBook.removeLast();
+        System.out.println("List after removals: " + phoneBook);
+
+        // More operations!!!
+        System.out.println("Contains Sam? " + phoneBook.contains("Sam"));
+        System.out.println("Get size of the list: " + phoneBook.size());
+
+        // First if statement practice
+        if (!phoneBook.isEmpty()) {
+            System.out.println("First in the list: " + phoneBook.getFirst());
+        }
+
+        phoneBook.clear();
+        System.out.println("List after clearing: " + phoneBook);
     }
 }
+
 ```
 
 Output in logical order:
 
 ```
-[Charlie]
-[Charlie, Sam]
-[Alex, Charlie, Sam]
-[Alex, Charlie, Sam, Taylor]
-[Alex, Charlie, Pat, Sam, Taylor]
-[Alex, Charlie, Sam, Taylor]
-[Alex, Charlie, Taylor]
-[Charlie, Taylor]
-[Charlie]
+List after additions: [Alex, Pat, Charlie, Sam, Pat, Taylor]
+List after removals: [Charlie, Pat]
+Contains Sam? false
+Get size of the list: 2
+First in the list: Charlie
+List after clearing: []
 ```
 
 Keep in mind, Linked Lists are good for implementing basic **Searching Algorithms** like **Linear Search**, but are not very efficient for **Sorting Algorithms**, since sorting algorithms require a lot of back-and-forth traversal and linked lists do not support indexing. However, linked lists are used in some recursive sorting algorithms like **Merge Sort**
@@ -465,6 +489,15 @@ Bottom
 Stacks are again part of the `java.util` package, similar to LinkedLists. Let's see how we code a Stack:
 
 ```java
+// Skim, then practice. Make your own examples
+
+// Stack add = .push()
+// Stack remove = .pop()
+// Stack empty? = .empty()
+// Stack View top element = .peek()
+// Stack search element = .search(Object o)
+// Stack size = .size()
+
 import java.util.Stack;
 
 public class StackExample {
@@ -472,28 +505,33 @@ public class StackExample {
     public static void main(String[] args) {
         Stack<String> stack = new Stack<>();
 
-        // push/add elements on top
         stack.push("First");
         stack.push("Second");
         stack.push("Third");
+        System.out.println("Stack: " + stack);
+        System.out.println("Top element (peek): " + stack.peek());
+        System.out.println("Is stack empty? " + stack.empty());
 
-        // "peek at the top element"
-        stack.peek();
-
-        // pop/remove elements on top
-        stack.pop();
+        int secondElement = stack.search("Second");
+        System.out.println("Position of 'Second': " + secondElement);
+        System.out.println("Stack size: " + stack.size());
+        System.out.println("Element removed (pop): " + stack.pop());
+        System.out.println("Stack after pop: " + stack);
     }
 }
+
 ```
 
 Output:
 
 ```
-[First]
-[First, Second]
-[First, Second, Third]
-Third
-[First, Second]
+Stack: [First, Second, Third]
+Top element (peek): Third
+Is stack empty? false
+Position of 'Second': 2
+Stack size: 3
+Element removed (pop): Third
+Stack after pop: [First, Second]
 ```
 
 While linked lists can handle basic Searching Algorithms like Linear Search and are particularly useful in recursive Sorting Algorithms like Merge Sort, stacks serve a different purpose.
@@ -503,3 +541,76 @@ Comparing stacks to linked lists is like comparing a straight path to a two-way 
 However, stacks are incredibly useful for managing function calls in recursion, for parsing expressions in compilers, and for implementing depth-first search (DFS) algorithms in graph processing. They excel in environments where the most recent data needs to be accessed first, contrasting with linked lists that allow sequential access and are flexible with insertions and deletions at any point.
 
 ### Queues (FIFO)
+
+Queues operate on the First In, First Out (FIFO) principle. Think of a line of customers waiting to check out at a grocery store. You stand in line from the back and you go as you came. Let's walk through the primary operations of a queue with a simple example:
+
+Imagine a queue starting with three elements: A, B, and C, with A being the first one in line (at the Front) and C the last (at the Back).
+
+```
+Initial Queue:
+
+            +---+    +---+    +---+
+(<- Front)  | A | -> | B | -> | C | (<- Back)
+            +---+    +---+    +---+
+```
+
+Next, we'll add 'D' to our queue. The enqueue operation adds 'D' to the back of the line, maintaining our order.
+
+```
+Enqueue 'D' (add 'D' - from back):
+
+            +---+    +---+    +---+    +---+
+(<- Front)  | A | -> | B | -> | C | -> | D | (<- Back)
+            +---+    +---+    +---+    +---+
+```
+
+Now, we'll remove the first element 'A' from the front of the queue. In our case, 'A' will leave the queue, making 'B' the new front element.
+
+```
+Dequeue (remove 'A' - first out) (NOT Deque):
+
+            +---+    +---+    +---+
+(<- Front)  | B | -> | C | -> | D | (<- Back)
+            +---+    +---+    +---+
+```
+
+This demonstrates the core functionality of a queue, showcasing how it manages elements in a sequential, orderly fashion. Think of customer service, traffic systems, print queues, and restaurant order management.
+
+Keep in mind, we have to import LinkedList and Queue because we use LinkedList as an implementation of the Queue interface to demonstrate Queue functionality.
+
+In simpler terms, this means that while Queue outlines the rules for how a queue should behave, LinkedList provides the actual mechanics and storage to make the queue work. LinkedList is particularly well-suited for this because it allows for efficient insertion and removal of elements at both ends, which is essential for maintaining the FIFO (First In, First Out) principle of queue operations.
+
+So moving onto FIFO:
+
+```java
+import java.util.LinkedList;
+import java.util.Queue;
+
+// Queue add = .offer()
+// Queue remove = .poll()
+public class QueueExample {
+    public static void main(String[] args) {
+        Queue<String> queue = new LinkedList<>();
+
+        // Enqueue: Add elements A, B, C, D
+        queue.offer("A");
+        queue.offer("B");
+        queue.offer("C");
+        queue.offer("D");
+        System.out.println("Queue after enqueues: " + queue);
+
+        // Dequeue: Removing the front element
+        String dequeuedElement = queue.poll();
+        System.out.println("Dequeued element: " + dequeuedElement);
+        System.out.println("Queue after dequeue: " + queue);
+    }
+}
+```
+
+Output:
+
+```
+Queue after enqueues: [A, B, C, D]
+Dequeued element: A
+Queue after dequeue: [B, C, D]
+```

@@ -1,10 +1,10 @@
 # DKO - Data Structures and Algorithms in Java
 
-I started this mainly for myself but for others to learn data structures and algorithms. We'll be diving in with Java, so sit back, enjoy, and feel free to follow along (you probably should).
+**I started this mainly for myself but for others to learn data structures and algorithms. We'll be diving in with Java, so sit back, enjoy, and feel free to follow along (you probably should).**
 
-### Why follow along
+## Why follow along
 
-Learning to code can be challenging. I remember feeling the need to know everything. You know what I mean - the Tutorial HELL TRAP. And while a broad understanding is helpful, I often learned the most when diving into projects that intrigued me. However, it wasn't smooth sailing. In the beginning, I struggled because I didn't fully grasp the importance of DSA. Correction - I didn't know what DSA was. "Projects" after unfinished projects, I struggled to apply basic methods of programming.
+Learning to code can be challenging. I remember feeling the need to know everything. You know what I mean - **The Tutorial Hell Trap**. And while a broad understanding is helpful, I often learned the most when diving into projects that intrigued me. However, it wasn't smooth sailing. In the beginning, I struggled because I didn't fully grasp the importance of DSA. Correction - I didn't know what DSA was. "Projects" after unfinished projects, I struggled to apply basic methods of programming.
 
 Ever wondered about these situations?
 
@@ -12,61 +12,63 @@ Ever wondered about these situations?
 - Ever thought about how social networks like Facebook or LinkedIn manage user connections? What role do graph data structures and traversal algorithms play in finding mutual friends?
 - Why do websites load faster on your second visit? Could this be due to efficient caching using doubly linked lists or hash maps?
 
-You get the point. We'll explore various concepts, but remember, it's more about gradually mastering these concepts over time.
+**You get the point. We'll explore various concepts, but remember, it's more about gradually mastering these concepts over time.**
 
-I guarantee making programs will be much more fun as you learn more concepts.
+---
 
-Tips:
+_I guarantee making programs will be much more fun as you learn more concepts._
 
-1. Engage actively with the material. Don't just copy codes because that doesn't do ANYTHING for you; use ChatGPT / Google to challenge yourself with questions and ask for "real world" examples to apply DSA concepts. AI is a game-changer buddy.
-2. Remember, learning is a marathon, not a sprint. Set realistic goals and pace yourself. You'll be learning fast at first but don't expect to me learning 8 lessons a day. It's going to slow down so don't be disappointed. Even 1-2 concepts/day is FINE!
-3. Let's stop talking and start doing!
+### Tips:
+
+1. **Engage actively with the material.** Don't just copy codes because that doesn't do ANYTHING for you; use ChatGPT / Google to challenge yourself with questions and ask for "real world" examples to apply DSA concepts. AI is a game-changer buddy.
+2. **Remember, learning is a marathon, not a sprint.** Set realistic goals and pace yourself. You'll be learning fast at first but don't expect to be learning 8 lessons a day. It's going to slow down so don't be disappointed. Even 1-2 concepts/day is FINE!
+3. **Let's stop talking and start doing!**
 
 FYI: I'll be using VSCode on a Macbook (Apple Silicon chip).
 
 ## Table of Contents
 
-- [Introduction to Java](#introduction-to-java)
-  - [Setting up Java Environment](#setting-up-java-environment)
-  - [Write Your First Java Program](#write-your-first-java-program)
-- [Fundamentals of Data Structures](#fundamentals-of-data-structures)
-  - [Big O Notation (MUST KNOW)](#big-o-notation-must-know)
-  - [Arrays](#arrays)
-  - [Loops](#loops)
-  - [Linked Lists](#linked-lists)
-  - [Stacks (LIFO)](#stacks-lifo)
-  - [Queues (FIFO)](#queues-fifo)
-- [Basic Algorithms](#basic-algorithms)
-  - [Searching Algorithms](#searching-algorithms)
-    - [Linear Search](#linear-search)
-    - [Binary Search](#binary-search)
-- [Sorting Algorithms](#sorting-algorithms)
-  - [Bubble Sort](#bubble-sort)
-  - [Selection Sort](#selection-sort)
-  - [Insertion Sort](#insertion-sort)
-- [Intermediate Data Structures](#intermediate-data-structures)
-  - [Trees](#trees)
-  - [Graphs](#graphs)
-  - [Heaps](#heaps)
-  - [Hash Tables](#hash-tables)
-- [Advanced Sorting Algorithms](#advanced-sorting-algorithms)
-  - [Merge Sort](#merge-sort)
-  - [Quick Sort](#quick-sort)
-  - [Heap Sort](#heap-sort)
-- [Advanced Concepts](#advanced-concepts)
-  - [Recursion](#recursion)
-  - [Divide and Conquer](#divide-and-conquer)
+- [**Introduction to Java**](#introduction-to-java)
+  - [**Setting up Java Environment**](#setting-up-java-environment)
+  - [**Write Your First Java Program**](#write-your-first-java-program)
+- [**Fundamentals of Data Structures**](#fundamentals-of-data-structures)
+  - [**Big O Notation (MUST KNOW)**](#big-o-notation-must-know)
+  - [**Arrays**](#arrays)
+  - [**Loops**](#loops)
+  - [**Linked Lists**](#linked-lists)
+  - [**Stacks (LIFO)**](#stacks-lifo)
+  - [**Queues (FIFO)**](#queues-fifo)
+- [**Basic Algorithms**](#basic-algorithms)
+  - [**Searching Algorithms**](#searching-algorithms)
+    - [**Linear Search**](#linear-search)
+    - [**Binary Search**](#binary-search)
+- [**Sorting Algorithms**](#sorting-algorithms)
+  - [**Bubble Sort**](#bubble-sort)
+  - [**Selection Sort**](#selection-sort)
+  - [**Insertion Sort**](#insertion-sort)
+- [**Intermediate Data Structures**](#intermediate-data-structures)
+  - [**Trees**](#trees)
+  - [**Graphs**](#graphs)
+  - [**Heaps**](#heaps)
+  - [**Hash Tables**](#hash-tables)
+- [**Advanced Sorting Algorithms**](#advanced-sorting-algorithms)
+  - [**Merge Sort**](#merge-sort)
+  - [**Quick Sort**](#quick-sort)
+  - [**Heap Sort**](#heap-sort)
+- [**Advanced Concepts**](#advanced-concepts)
+  - [**Recursion**](#recursion)
+  - [**Divide and Conquer**](#divide-and-conquer)
 
-## Introduction to Java
+## **Introduction to Java**
 
-I chose Java because of its unique balance between performance and usability. Unlike C, Java offers a more forgiving and intuitive programming environment, which is excellent for beginners. But honestly, I'm using Java because I wanna. You think it's a joke, huh?
+_I chose Java because of its unique balance between performance and usability. Unlike C, Java offers a more forgiving and intuitive programming environment, which is excellent for beginners. But honestly, I'm using Java because I wanna. You think it's a joke, huh?_
 
-### Setting up Java Environment
+### **Setting up Java Environment**
 
-- **Download Java/JDK**: Visit the [Official Java Website](https://www.oracle.com/java/technologies/downloads/#java11-mac) to download the Java Development Kit (JDK).
+- **Download Java/JDK**: Visit the [**Official Java Website**](https://www.oracle.com/java/technologies/downloads/#java11-mac) to download the Java Development Kit (JDK).
 
-Think of Java like the ABCs of computer language. It's what we use to tell the computer what to do.
-The JDK? That's your toolbox. It has all the tools (like a compiler and libraries) you need to start creating with Java.
+_Think of Java like the ABCs of computer language. It's what we use to tell the computer what to do.
+The JDK? That's your toolbox. It has all the tools (like a compiler and libraries) you need to start creating with Java._
 
 ### Write Your First Java Program
 

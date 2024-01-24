@@ -72,7 +72,11 @@ The JDK? That's your toolbox. It has all the tools (like a compiler and librarie
 3. Once `HelloWorld.java` is opened, input the following Java code then save `(Cmd + S)`:
 
    ```java
+   // This is how you create a comment
+   // Main Class
    public class HelloWorld {
+
+       // Driver Code
        public static void main(String[] args) {
            System.out.println("Hello, World!");
        }
@@ -284,7 +288,7 @@ Inserting 'X' at index 2:
 +---+---+---+---+---+
 | A | B | X | C | D |
 +---+---+---+---+---+
-       ↑
+            →
 Elements shifted right
 ```
 
@@ -298,7 +302,7 @@ Deleting 'B':
 +---+---+---+
 | A | C | D |
 +---+---+---+
-       ←
+        ←
 Elements shifted left
 ```
 
@@ -314,8 +318,8 @@ Inserting 'C' after 'B':
 +---+    +---+    +---+    +---+
 | A | -> | B | -> | C | -> | D |
 +---+    +---+    +---+    +---+
-                ↑
-Only pointers updated
+                    ↑
+         Only pointers updated
 ```
 
 ```
@@ -328,8 +332,54 @@ Deleting 'B':
 +---+             +---+
 | A | ----------> | C |
 +---+             +---+
-       ↑
-'B' is bypassed
+          ↑
+   'B' is bypassed
 ```
 
-This simplicity and flexibility are exactly why we use linked lists in programming when we expect to add or remove a lot of items. But how do we create a linked list in Java? That's where the concept of 'importing packages' comes into play.
+This simplicity and flexibility are exactly why we use linked lists in programming when we expect to add or remove a lot of items.
+
+So how do we create a linked list in Java? That's where Java's `import java.util.*` package comes in handy. It's like a toolbox full of helpful tools — and one of those tools is the LinkedList class. Instead of making your own gear, you just ask to use this. This saves you time, and you know it's going to work well because it’s been tried and tested.
+
+I suggest you skimming through [Package `java.util`](https://docs.oracle.com/javase/8/docs/api/java/util/package-summary.html) to get a sense of the rich open-source resources at your disposal.
+
+Anyways, let's get straight into Linked Lists:
+
+```java
+// import LinkedList
+import java.util.LinkedList;
+
+public class LinkedListExample {
+    public static void main(String args[]) {
+        // Create LinkedList of String type
+        LinkedList<String> ll = new LinkedList<String>();
+
+        // add elements
+        friendsList.add("Charlie");
+        friendsList.add("Sam");
+        friendsList.addFirst("Alex");
+        friendsList.addLast("Taylor");
+        friendsList.add(2, "Pat");
+
+        // remove elements
+        friendsList.remove("Pat");
+        friendsList.remove(2);
+        friendsList.removeFirst();
+        friendsList.removeLast();
+
+    }
+}
+```
+
+Output in logical order:
+
+```
+[Charlie]
+[Charlie, Sam]
+[Alex, Charlie, Sam]
+[Alex, Charlie, Sam, Taylor]
+[Alex, Charlie, Pat, Sam, Taylor]
+[Alex, Charlie, Sam, Taylor]
+[Alex, Charlie, Taylor]
+[Charlie, Taylor]
+[Charlie]
+```

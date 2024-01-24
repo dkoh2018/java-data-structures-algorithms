@@ -1,15 +1,18 @@
 # DKO - Data Structures and Algorithms in Java
 
-I started this mainly for myself but for others to learn data structures and algorithms. We'll be diving in with Java, so sit back, enjoy, and feel free to follow along. Try to grasp the logic behind each concept before jumping into coding.
+I started this mainly for myself but for others to learn data structures and algorithms. We'll be diving in with Java, so sit back, enjoy, and feel free to follow along.
 
-FYI: I'll be using a VSCode on a Macbook (Apple Silicon chip).
+FYI: I'll be using VSCode on a Macbook (Apple Silicon chip).
 
 ## Table of Contents
 
-- [Getting Started with Java](#getting-started-with-java)
+- [Introduction to Java](#getting-started-with-java)
+  - [Setting up Java Environment](#settingupjavaenvironmnet)
+  - [Write Your First Java Program](#WriteYourFirstJavaProgram)
 - [Fundamentals of Data Structures](#fundamentals-of-data-structures)
   - [Big O-notation](#bigonotation)
   - [Arrays](#arrays)
+  - [Loops](#loops)
   - [Linked Lists](#linked-lists)
   - [Stacks](#stacks)
   - [Queues](#queues)
@@ -116,9 +119,9 @@ The efficiency of an algorithm often comes down to how its running time increase
 
 Let's compare 2 situations:
 
-**Scenario 1:** You have a **Nested Loop**, a loop nested within another loop. Despite achieving similar results, this pattern signifies a Big O notation of O(n^2). This complexity suggests that the time taken doubles with each additional element.
+**Scenario 1:** You have a **Nested Loop**, a loop nested within another loop. This pattern signifies a Big O notation of O(n^2). This complexity suggests that the time taken doubles with each additional element.
 
-**Scenario 2:** Contrary to the first scenario, you have **two separate loops**, each iterating over your data. This case represents a Big O notation of O(n). This means that the runtime grows linearly and in direct proportion to the size of the input data set.
+**Scenario 2:** Contrary to the first scenario, you have **two separate loops**, each iterating over your data. Despite achieving similar results, this case represents a Big O notation of O(n). This means that the runtime grows linearly and in direct proportion to the size of the input data set.
 
 Quite clearly, using two separate loops would provide a faster runtime.
 
@@ -180,4 +183,82 @@ class ArrayExample {
 }
 ```
 
-However, this is a bit messy as in, it's a ton of code. We want to make it os that we're as efficient with our
+However, this current code is a bit inefficient and unnecessarily cluttered. We could avoid wasting time and tidy up our code by refraining from writing repetitive lines. This brings us to our next valuable lesson - Loops.
+
+### Loops
+
+Mastering loops is fundamental to thinking and programming efficiently. Doing so saves time as loops handle repetitive tasks flexibly without the need for lengthy copy-and-paste code. With that in mind, we're going to quickly explore three types of loops:
+
+1. For loops
+2. While loops
+
+Do some digging on loops when you get a chance; there's quite a few variations out there: Do-While Loops, Infinite Loops, Loops with 'else' clauses, Comprehension Loops, Iterator Loops, Generator Loops, Nested Loops, and more. The rabbit hole goes deep so have fun exploring.
+
+Now, coming to the examples:
+
+```java
+class ArrayExample {
+    public static void main(String[] args) {
+        int[] Array;
+        Array = new int[10];
+
+        // Insert Loop codes here
+    }
+}
+```
+
+#### For Loops
+
+```java
+// Initializes each element to a multiple of 100 and then print its index and value
+for (int i = 0; i < Array.length; i++) {
+    Array[i] = (i + 1) * 100;
+    System.out.println("Element at index "+i+": "+Array[i]);
+}
+```
+
+#### While Loops
+
+```java
+// Populate each element with a multiple of 100 and display its index and value
+int i = 0;
+while (i < Array.length) {
+    Array[i] = (i+1) * 100;
+    System.out.println("Element at index "+i+": "+Array[i]);
+    i++;
+}
+```
+
+While arrays are powerful in their simplicity and direct access, they come with limitations, particularly in their fixed size and the complexity involved in inserting or deleting elements. To address these limitations, let's explore another fundamental data structure: Linked Lists.
+
+### Linked Lists
+
+Linked Lists, as dynamic data structures, differ significantly from arrays. Key highlights include:
+
+- **Dynamic Size**: They can expand or contract, offering flexibility.
+- **Easy Modifications**: Insertions and deletions are simpler, without needing to shift other elements.
+- **Non-Contiguous Storage**: Elements ('nodes') are linked via pointers and can reside anywhere in memory.
+
+On the flip side:
+
+- **Increased Memory**: Nodes consume extra memory due to data and pointer storage.
+- **Sequential Access**: Direct element access is not possible; traversal from the start is required.
+
+Let's see how we can implement a Singly Linked List.
+
+This is a a single element or Node of the linked list.
+
+```java
+class Node {
+    int data;
+    Node next;
+
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+```
+
+- `int data`: Stores the data value.
+- `Node next`: Referencing the next node in the list.

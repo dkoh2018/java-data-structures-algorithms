@@ -913,11 +913,16 @@ In the upcoming sections, we'll dive into a few fundamental sorting techniques:
 
 ### **Bubble Sort**
 
-Bubble Sort is a straightforward sorting algorithm, introducing you to the world of sorting.
+Bubble Sort is a straightforward sorting algorithm, introducing you to the world of sorting. It works by repeatedly stepping through the list, comparing adjacent elements and swapping them if they are in the wrong order.
 
-It works by repeatedly stepping through the list, comparing adjacent elements and swapping them if they are in the wrong order. We continue process continues until the list is sorted.
+**Key Point:**
 
-However, _it's not the most efficient for large datasets_. It's more of a beginner's tool to get familiar with how sorting algorithms work.
+- _It's not the most efficient for large datasets_. It's more of a beginner's tool to get familiar with how sorting algorithms work.
+
+**Breaking it Down:**
+
+- Assume `i = 0` and `j = 1`.
+- `if arr[i] > arr[j]`, then we swap, and continue until the array is sorted.
 
 **Let me show you a quick visualization of how a Bubble sort works in action:**
 
@@ -998,7 +1003,26 @@ The array is now fully sorted.
 Now let's see this code in action:
 
 ```java
+// we'll loop i to go from the start everytime
+// we'll loop j to get rid of one last at the end since we already did that operation
+// within each loop, if prev array value greater than next array, then swap with temp variable method
+public class BubbleSortExample {
+    static void bubbleSort(int[] arr) {
+        int temp = 0;
 
+         for(int i=0; i < arr.length; i++){
+                 for(int j=1; j < (arr.length - i); j++){
+                          if(arr[j-1] > arr[j]){
+                                 //swap elements
+                                 temp = arr[j-1];
+                                 arr[j-1] = arr[j];
+                                 arr[j] = temp;
+                         }
+
+                 }
+         }
+    }
+}
 ```
 
 ### **Selection Sort**

@@ -40,12 +40,12 @@ FYI: I'll be using VSCode on a Macbook (Apple Silicon chip).
   - [**Queues (FIFO)**](#queues-fifo)
 - [**Basic Algorithms**](#basic-algorithms)
   - [**Searching Algorithms**](#searching-algorithms)
-    - [**Linear Search**](#linear-search)
-    - [**Binary Search**](#binary-search)
-  - [**Sorting Algorithms**](#sorting-algorithms)
-    - [**Bubble Sort**](#bubble-sort)
-    - [**Selection Sort**](#selection-sort)
-    - [**Insertion Sort**](#insertion-sort)
+  - [**Linear Search**](#linear-search)
+  - [**Binary Search**](#binary-search)
+- [**Sorting Algorithms**](#sorting-algorithms)
+  - [**Bubble Sort**](#bubble-sort)
+  - [**Selection Sort**](#selection-sort)
+  - [**Insertion Sort**](#insertion-sort)
 - [**Intermediate Data Structures**](#intermediate-data-structures)
   - [**Trees**](#trees)
   - [**Graphs**](#graphs)
@@ -632,19 +632,9 @@ Queue after dequeue: [B, C, D]
 
 ## **Basic Algorithms**
 
-So, we've covered Arrays, Linked Lists, Stacks, and Queues. Now, it's time to dive into the world of algorithms. Understanding these data structures sets a solid foundation for us to explore how algorithms efficiently manipulate, search, and sort data.
-
-## **Searching Algorithms**
-
-When we talk about searching algorithms, we're diving into the methods of finding specific data within our structures.
-
-_Imagine a toolbox – we've got our tools (data structures), and now we need efficient ways to use them._
-
-Searching algorithms are crucial because they dictate how quickly we can access or find data. Learning about arrays, linked lists, and the like was like learning to organize our toolbox; now, we're learning the best ways to use those tools.
+### **Searching Algorithms**
 
 ### **Linear Search**
-
-Linear searches are the most basic form of serach algorthims and it's quite easy to understand. If you had a randomized data structure of 6 unique numbers from 1-6 and you were asked to find where the number "3" was, you would go down
 
 ### **Binary Search**
 

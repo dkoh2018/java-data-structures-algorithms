@@ -40,6 +40,7 @@ FYI: I'll be using VSCode on a Macbook (Apple Silicon chip).
   - [**Queues (FIFO)**](#queues-fifo)
 - [**Basic Algorithms**](#basic-algorithms)
   - [**Searching Algorithms**](#searching-algorithms)
+    - [**Quick Tip on Code Structure**](#quick-tip-on-code-structure)
     - [**Linear Search**](#linear-search)
     - [**Binary Search**](#binary-search)
   - [**Sorting Algorithms**](#sorting-algorithms)
@@ -58,6 +59,7 @@ FYI: I'll be using VSCode on a Macbook (Apple Silicon chip).
 - [**Advanced Concepts**](#advanced-concepts)
   - [**Recursion**](#recursion)
   - [**Divide and Conquer**](#divide-and-conquer)
+    <br><br>
 
 ## **Introduction to Java**
 
@@ -95,15 +97,18 @@ The JDK? That's your toolbox. It has all the tools (like a compiler and librarie
 
    ```java
    // This is how you create a comment
-   // Main Class (*** make sure HelloWorld matches your file name HelloWorld.java ***)
+   // Class Definition (*** make sure HelloWorld matches your file name HelloWorld.java ***)
    public class HelloWorld {
 
-       // Driver Code
+       // Main Method
        public static void main(String[] args) {
            System.out.println("Hello, World!");
        }
    }
    ```
+
+   - `public class HelloWorld` as the main label or title of your Java program, similar to how you name a document. It's like the cover of a book, telling you what's inside. In Java, every bit of code lives inside a class, so this is like naming your project.
+   - `public static void main(String[] arg)` is a "special tool" you are making in your Java toolkit. It's labeled `public`, meaning anyone can use it, and `static` means you can use it immediately, no special preparation needed. The void indicates it won't return anything, like a tool used for a job but not for producing a direct output.
 
 4. To run this script, either:
 
@@ -119,6 +124,7 @@ The JDK? That's your toolbox. It has all the tools (like a compiler and librarie
 Visit [Learn Java Online](https://www.learnjavaonline.org/) for more Java Basics since I'll be covering DSA here, instead.
 
 Alright, let's now dive in.
+<br><br>
 
 ## **Fundamentals of Data Structures**
 
@@ -174,11 +180,11 @@ Here's an example:
 class ArrayExample {
     public static void main(String[] args) {
 
-        // declare array of integers then allocate memory for 10 integers
+        // Declare array of integers then allocate memory for 10 integers
         int[] Array;
         Array = new int[10];
 
-        // initialize first element[0] then second element[1] and so on...
+        // Initialize first element[0] then second element[1] and so on...
         Array[0] = 100;
         Array[1] = 200;
         Array[2] = 300;
@@ -642,9 +648,137 @@ _Imagine a toolbox – we've got our tools (data structures), and now we need ef
 
 Searching algorithms are crucial because they dictate how quickly we can access or find data. Learning about arrays, linked lists, and the like was like learning to organize our toolbox; now, we're learning the best ways to use those tools.
 
+---
+
+### Quick Tip on Code Structure
+
+**If you're new to Java**, it's crucial to understand the structure of your code. To jog our memory, let's revisit a snippet from [**Write Your First Java Program**](#write-your-first-java-program).
+
+```java
+// Class Definition
+public class HelloWorld {
+
+    // Main Method / Driver Code
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+```
+
+Up to this point, I've been guiding you through adding code just after what's known as the driver code, or the main method. But now, as we step into the world of more complex algorithms, I want to show you how to write your own specialized functions right within the Class Definition.
+
+This way, we separate what the function does (its logic) from the data it works with (inputs and outputs). It's like sorting out our toolbox so that we can easily grab just the right tool—our custom function—whenever we need it.
+
+```java
+// Class Definition
+public class MyFunction {
+    // < Write your custom function here >
+
+    // Main Method
+    public static void main(String[] args) {
+        // < Gather your inputs here >
+        // < Call your custom function with those inputs and print >
+    }
+}
+```
+
+---
+
 ### **Linear Search**
 
-Linear searches are the most basic form of serach algorthims and it's quite easy to understand. If you had a randomized data structure of 6 unique numbers from 1-6 and you were asked to find where the number "3" was, you would go down
+Linear searches are the most basic type of search algorithms, but they're quite straightforward.
+
+Imagine you have an array with five numbers, ranging from 1 to 5, arranged in a random order. _Your task is to locate the number 3._
+
+In a linear search, you would:
+
+1. **Start from the beginning**
+2. **Go down the line:** If the current element doesn't match the number you're looking for, move to the next element in the array.
+3. **Keep going until you find the target:** Once you find an element that matches (in this case, the number 3), print out "Found Target!"
+
+This method ensures that you check each element of the array, making it a reliable, though not necessarily the most efficient, search strategy
+
+```
+Initial Array:
++---+---+---+---+---+
+| 1 | 4 | 3 | 5 | 2 |
++---+---+---+---+---+
+
+Target -> 3
+```
+
+Now let's search for target -> 3:
+
+```
+Check first element:
++---+---+---+---+---+
+| 1 |   |   |   |   |
++---+---+---+---+---+
+ Not 3, move to next.
+
+Check second element:
++---+---+---+---+---+
+|   | 4 |   |   |   |
++---+---+---+---+---+
+ Not 3, move to next.
+
+Check third element:
++---+---+---+---+---+
+|   |   | 3 |   |   |
++---+---+---+---+---+
+       Found 3!
+```
+
+Now that we understood the logic, let's start writing up our code.
+
+```java
+public class Main {
+
+    // Linear search method (int arr[] -> input array, int x -> target value)
+    // Searches each element in order of arr[] to find the target value, x
+    // If found, returns the index of x. Otherwise returns -1
+
+    public static int linearSearch(int arr[], int x) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == x)
+                return i;
+        }
+        return -1;
+    }
+
+    // Driver code
+    // Let's look for 1st '10' element
+    // Ask your linearSearch function to find where your target is within the array
+
+    public static void main(String args[]) {
+        int arr[] = { 2, 3, 4, 10, 40 };
+        int x = 10;
+
+        int result = linearSearch(arr, x);
+        System.out.println("Target found at arr["+result+"]");
+    }
+}
+```
+
+Output:
+
+```
+Target found at arr[3]
+```
+
+Given our array `int arr[] = { 2, 3, 4, 10, 40 }`, it's important to remember that in Java, array indexing starts at 0. So, arr[3] is actually the fourth element in our array, not the third.
+
+#### Before We Dive Into the Next Algorithm ...
+
+I know discussing time complexity might seem a bit dry, but it's crucial for understanding the efficiency of our programs. As we saw in our [Big O Notation (MUST KNOW)](#big-o-notation-must-know) section, recognizing which algorithms perform better under different conditions is key.
+
+**Time Complexity: Linear Search**
+
+- **Best Case:** If the key is at the first index. Complexity: O(1).
+- **Worst Case:** If the key is at the last index, or the search starts from the opposite end. Complexity: O(N), where N is the list size.
+- **Average Case:** O(N).
+
+_Now let's move on_
 
 ### **Binary Search**
 

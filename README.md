@@ -853,18 +853,22 @@ Now let's see how this looks in code:
 // If target is greater, move low to middle + 1
 // If target is smaller, move high to middle - 1
 // Return -1 if target is not found
+
 public class BinarySearch {
 
     // Binary search method
     public int binarySearch(int arr[], int target) {
         int low = 0, high = arr.length - 1;
+
         while (low <= high) {
             int middle = low + (high - low) / 2;
 
             if (arr[middle] == target)
                 return middle;
+
             if (arr[middle] < target)
                 low = middle + 1;
+
             else
                 high = middle - 1;
         }
@@ -876,8 +880,9 @@ public class BinarySearch {
         int arr[] = { 2, 3, 4, 10, 40, 35, 36, 23 };
         int target = 10;
 
-        BinarySearch instance = new BinarySearch();  // Create an instance of BinarySearch
-        int result = instance.binarySearch(arr, target);  // Call binary search
+        // Create an instance of BinarySearch and call binarySearch
+        BinarySearch instance = new BinarySearch();
+        int result = instance.binarySearch(arr, target);
 
         System.out.println("Element is present at index: arr["+result+"]");
     }
@@ -887,7 +892,7 @@ public class BinarySearch {
 Output:
 
 ```
-Element is present at index: arr[3]
+Target is present at index: arr[3]
 ```
 
 **Time Complexity: Binary Search**
@@ -898,7 +903,103 @@ Element is present at index: arr[3]
 
 ## **Sorting Algorithms**
 
+After exploring basic search algorithms like Linear Search and Binary Search, it becomes clear that some search methods requires you to have sorted arrays. This leads us to the world of sorting algorithms, which are as varied and important as searching algorithms.
+
+In the upcoming sections, we'll dive into a few fundamental sorting techniques:
+
+- Bubble Sort
+- Selection Sort
+- Insertion Sort
+
 ### **Bubble Sort**
+
+Bubble Sort is a straightforward sorting algorithm, introducing you to the world of sorting.
+
+It works by repeatedly stepping through the list, comparing adjacent elements and swapping them if they are in the wrong order. We continue process continues until the list is sorted.
+
+However, _it's not the most efficient for large datasets_. It's more of a beginner's tool to get familiar with how sorting algorithms work.
+
+**Let me show you a quick visualization of how a Bubble sort works in action:**
+
+```
+Initial Array of 5 numbers:
++---+---+---+---+---+
+| 10| 4 | 7 | 2 | 5 |
++---+---+---+---+---+
+
+
+Now let's bubble sort them:
+
+       Pass 1:
++---+---+---+---+---+
+| 4 | 10| 7 | 2 | 5 |
++---+---+---+---+---+
+  ↑   ↑
+  Swap
++---+---+---+---+---+
+| 4 | 7 | 10| 2 | 5 |
++---+---+---+---+---+
+      ↑   ↑
+      Swap
++---+---+---+---+---+
+| 4 | 7 | 2 | 10| 5 |
++---+---+---+---+---+
+          ↑   ↑
+          Swap
++---+---+---+---+---+
+| 4 | 7 | 2 | 5 | 10|
++---+---+---+---+---+
+              ↑   ↑
+              Swap
+
+
+      Pass 2:
++---+---+---+---+---+
+| 4 | 7 | 2 | 5 | 10|
++---+---+---+---+---+
+  ↑   ↑
+  No Swap
++---+---+---+---+---+
+| 4 | 2 | 7 | 5 | 10|
++---+---+---+---+---+
+      ↑   ↑
+      Swap
++---+---+---+---+---+
+| 4 | 2 | 5 | 7 | 10|
++---+---+---+---+---+
+          ↑   ↑
+          Swap
+
+
+      Pass 3:
++---+---+---+---+---+
+| 2 | 4 | 5 | 7 | 10|
++---+---+---+---+---+
+  ↑   ↑
+  Swap
++---+---+---+---+---+
+| 2 | 4 | 5 | 7 | 10|
++---+---+---+---+---+
+      ↑   ↑
+      No Swap
+
+
+      Pass 4:
++---+---+---+---+---+
+| 2 | 4 | 5 | 7 | 10|
++---+---+---+---+---+
+  ↑   ↑
+  No Swap
+
+The array is now fully sorted.
+
+```
+
+Now let's see this code in action:
+
+```java
+
+```
 
 ### **Selection Sort**
 

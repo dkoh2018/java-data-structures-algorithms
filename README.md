@@ -381,18 +381,18 @@ Anyways, let's get straight into Linked Lists:
 ```java
 // Skim, then practice. Make your own examples
 
-// Add end = .add()
-// Add beginning = .addFirst()
-// Add last = .addLast()
-// Add specific = .add(2, "Pat")
-// Remove first occurrence = .remove()
-// Remove specific = .remove(2)
-// Remove first = .removeFirst()
-// Remove last = .removeLast()
-// Contains an element = .contains()
-// Get size of list = .size()
-// Check if empty = .isEmpty()
-// Get first non-empty element = .getFirst()
+// .add() = Add end
+// .addFirst() = Add beginning
+// .addLast() = Add last
+// .add(2, "Pat") = Add specific
+// .remove() = Remove first occurrence
+// .remove(2) = Remove specific
+// .removeFirst() = Remove first
+// .removeLast() = Remove last
+// .contains() = Contains an element
+// .size() = Get size of list
+// .isEmpty() = Check if empty
+// .getFirst() = Get first non-empty element
 
 import java.util.LinkedList;
 
@@ -505,12 +505,12 @@ Stacks are again part of the `java.util` package, similar to LinkedLists. Let's 
 ```java
 // Skim, then practice. Make your own examples
 
-// Stack add = .push()
-// Stack remove = .pop()
-// Stack empty? = .empty()
-// Stack View top element = .peek()
-// Stack search element = .search(Object o)
-// Stack size = .size()
+// .push() = Stack add
+// .pop() = Stack remove
+// .empty() = Check if Stack is empty
+// .peek() = View top element of Stack
+// .search(Object o) = Search element in Stack
+// .size() = Get Stack size
 
 import java.util.Stack;
 
@@ -696,7 +696,7 @@ In a linear search, you would:
 2. **Go down the line:** If the current element doesn't match the number you're looking for, move to the next element in the array.
 3. **Keep going until you find the target:** Once you find an element that matches (in this case, the number 3), print out "Found Target!"
 
-This method ensures that you check each element of the array, making it a reliable, though not necessarily the most efficient, search strategy
+This method ensures that you check each element of the array, making it a reliable, though not necessarily the most efficient, search strategy.
 
 ```
 Initial Array:
@@ -732,13 +732,13 @@ Check third element:
 Now that we understood the logic, let's start writing up our code.
 
 ```java
-public class Main {
+public class LinearSearch {
 
     // Linear search method (int arr[] -> input array, int x -> target value)
     // Searches each element in order of arr[] to find the target value, x
     // If found, returns the index of x. Otherwise returns -1
 
-    public static int linearSearch(int arr[], int x) {
+    public int linearSearch(int arr[], int x) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == x)
                 return i;
@@ -751,7 +751,7 @@ public class Main {
     // Ask your linearSearch function to find where your target is within the array
 
     public static void main(String args[]) {
-        int arr[] = { 2, 3, 4, 10, 40 };
+        int arr[] = { 2, 3, 4, 10, 40, 10, 5, 10};
         int x = 10;
 
         int result = linearSearch(arr, x);
@@ -781,6 +781,120 @@ I know discussing time complexity might seem a bit dry, but it's crucial for und
 _Now let's move on_
 
 ### **Binary Search**
+
+If you have 100 million numbers and were told to find a target that was the last element by unforuntae luck, then a linear serach would take way too long.
+
+What if there was a faster method? Assuming our array is **sorted**, we can cleverly cut down half of the elements in just one move.
+
+- If our target is higher than the midpoint, we'll zoom in on the upper half.
+- Conversely, if it's lower, we'll shift our focus to the lower half.
+- Rinse and Repeat (but make sure to also check low, mid, and high values)
+
+_So how does this look visually?_
+
+```
+Initial Array of 10 random numbers:
++---+---+---+---+---+---+---+---+---+---+
+| 10| 4 | 3 | 5 | 2 | 9 | 7 | 6 | 8 | 1 |
++---+---+---+---+---+---+---+---+---+---+
+
+Sort the array:
++---+---+---+---+---+---+---+---+---+---+
+| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10|
++---+---+---+---+---+---+---+---+---+---+
+```
+
+Now that we have sorted our array, let's look for our target -> 3.
+
+#### Step 1: Calculate Middle Index
+
+We apply the formula `middle = low + (high - low) / 2` to determine the middle index. With 10 elements, our initial low is at index 0 and high is at index 9. Plugging in these values, we get:
+
+`middle = 0 + (9 - 0) / 2 = 4.5`
+
+Since array indices are integers, we **round down** to the nearest whole number, resulting in an index of 4 for our middle (which is '5').
+
+We will keep doing this until we find our '3'.
+
+```
+Step 1 (Find the middle):
++---+---+---+---+---+---+---+---+---+---+
+| L |   |   |   | M |   |   |   |   | H |
++---+---+---+---+---+---+---+---+---+---+
+| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10|
++---+---+---+---+---+---+---+---+---+---+
+
+Step 2 (Take the first half and find new middle):
++---+---+---+---+---+---+
+| L |   | M |   |   | H |
++---+---+---+---+---+---+
+| 1 | 2 | 3 | 4 | 5 |   |
++---+---+---+---+---+---+
+Middle is 3, which is the target.
+
+Target Found at index 2:
++---+---+---+---+---+---+---+---+---+---+
+|   |   | X |   |   |   |   |   |   |   |
++---+---+---+---+---+---+---+---+---+---+
+| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10|
++---+---+---+---+---+---+---+---+---+---+
+```
+
+Notice how we didn't update the high value to be the middle value? That's because **we've already checked the middle value**.
+
+If our target was at this position, we would have found it already! By setting `high = middle - 1`, we effectively narrow down the search range to the lower half, excluding the middle element which we know is not the target. This smart move cuts down our search time significantly.
+
+Now let's see how this looks in code:
+
+```java
+// Initialize low and high pointers
+// Continue searching as long as low <= high
+// If target equals middle, return its index
+// If target is greater, move low to middle + 1
+// If target is smaller, move high to middle - 1
+// Return -1 if target is not found
+public class BinarySearch {
+
+    // Binary search method
+    public int binarySearch(int arr[], int target) {
+        int low = 0, high = arr.length - 1;
+        while (low <= high) {
+            int middle = low + (high - low) / 2;
+
+            if (arr[middle] == target)
+                return middle;
+            if (arr[middle] < target)
+                low = middle + 1;
+            else
+                high = middle - 1;
+        }
+        return -1;
+    }
+
+    // Main method for testing binary search
+    public static void main(String args[]) {
+        int arr[] = { 2, 3, 4, 10, 40, 35, 36, 23 };
+        int target = 10;
+
+        BinarySearch instance = new BinarySearch();  // Create an instance of BinarySearch
+        int result = instance.binarySearch(arr, target);  // Call binary search
+
+        System.out.println("Element is present at index: arr["+result+"]");
+    }
+}
+```
+
+Output:
+
+```
+Element is present at index: arr[3]
+```
+
+**Time Complexity: Binary Search**
+
+- **Best Case:** O(1) – Occurs when the target is at the middle of the array.
+- **Average Case:** O(log N) – On average, the algorithm splits the array log N times.
+- **Worst Case:** O(log N) – In the worst case, the algorithm will have to split the array until only one element is left.
 
 ## **Sorting Algorithms**
 

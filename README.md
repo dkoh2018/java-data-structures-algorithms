@@ -921,8 +921,8 @@ Bubble Sort is a straightforward sorting algorithm, introducing you to the world
 
 **Breaking it Down:**
 
-- Assume `i = 0` and `j = 1`.
-- `if arr[i] > arr[j]`, then we swap, and continue until the array is sorted.
+- Assume `j = 1`.
+- `if arr[j - 1] > arr[j]`, then we swap, and continue until the array is sorted.
 
 **Let me show you a quick visualization of how a Bubble sort works in action:**
 
@@ -933,7 +933,11 @@ Initial Array of 5 numbers:
 +---+---+---+---+---+
 
 
-Now let's bubble sort them:
+Now let's bubble sort them.
+
+arr[j - 1] > arr[j]
+     10    >   4
+True, so swap and go to next
 
        Pass 1:
 +---+---+---+---+---+
@@ -997,7 +1001,6 @@ Now let's bubble sort them:
   No Swap
 
 The array is now fully sorted.
-
 ```
 
 Now let's see this code in action.
@@ -1018,7 +1021,6 @@ public class BubbleSort {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 1; j < (arr.length - i); j++) {
                 if (arr[j - 1] > arr[j]) {
-                    // Swap elements
                     temp = arr[j - 1];
                     arr[j - 1] = arr[j];
                     arr[j] = temp;
@@ -1071,6 +1073,7 @@ public static void main(String[] args) {
 
      BubbleSort instance = new BubbleSort();
      instance.bubbleSort(arr);
+
      System.out.print("Bubble Sorted: [");
      for (int i = 0; i < arr.length; i++) {
          System.out.print(arr[i]);
@@ -1152,9 +1155,9 @@ Bubble Sorted: [2, 3, 5, 35, 45, 60, 320]
 
 #### _**>> Author's Sidenote:**_
 
-_Keep in mind, I've spent a good chunk of time breaking down class definitions and driver code step by step and hopefully, you've picked up a lot along the way and NOT just by copy/pasting code._
+_Keep in mind, I've spent a good chunk of time breaking down class definitions and driver codes step by step. Hopefully, you've picked up a lot along the way._
 
-_Now, it's your turn to take the wheel a bit. I'll still be unpacking the logic, but reading and understanding the code? Consider it a personal challenge_
+_Now, it's your turn to take the wheel a bit. I'll still be unpacking the logic, but reading and understanding the code? **Consider it a personal challenge**_
 
 ### **Selection Sort**
 

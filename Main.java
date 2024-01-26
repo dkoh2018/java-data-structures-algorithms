@@ -1,29 +1,23 @@
-public class Main { 
-    public int binarySearch(int arr[], int target) { 
-        int low = 0, high = arr.length - 1;
-        while (low <= high) {
-            int middle = low + (high - low) / 2;
-
-            if (arr[middle] == target)
-            return middle;
-
-            if (arr[middle] < target)
-                low = middle + 1;
-            else 
-                high = middle - 1;
+public class Main {
+    public void bubbleSort(int[] arr) {
+        int temp;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 1; j < (arr.length - i); j++) {
+                if (arr[j - 1] > arr[j]) {
+                    // Swap elements
+                    temp = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = temp;
+                }
+            }
         }
-        return -1;
-    } 
-
-// We will cover how to sort arrays later so I will provide a sorted array
+    }
+    
 
     public static void main(String args[]) {
-        int arr[] = { 2, 3, 4, 10, 40, 35, 36, 23 };
-        int target = 100;  // Target element to find
-
-     Main variable = new Main();  // Create an instance of Main
-        int result = variable.binarySearch(arr, target);  // Call binary search
-        System.out.println("Element is present at index: arr["+result+"]");
-
-    }
+        int[] arr = {3, 60, 35, 2, 45, 320, 5};
+        Main instance = new Main();
+        instance.bubbleSort(arr);
+        System.out.println(arr);
+}
 }

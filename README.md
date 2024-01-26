@@ -898,8 +898,8 @@ Target is present at index: arr[3]
 **Time Complexity: Binary Search**
 
 - **Best Case:** O(1) – Occurs when the target is at the middle of the array.
-- **Average Case:** O(log N) – On average, the algorithm splits the array log N times.
 - **Worst Case:** O(log N) – In the worst case, the algorithm will have to split the array until only one element is left.
+- **Average Case:** O(log N) – On average, the algorithm splits the array log N times.
 
 ## **Sorting Algorithms**
 
@@ -1000,30 +1000,161 @@ The array is now fully sorted.
 
 ```
 
-Now let's see this code in action:
+Now let's see this code in action.
+
+**Challenges:**
+
+1. Learn to swap variables using a 3rd variable called `temp`. However, more advnaced methods will require you to just stick with your two variables.
+2. _Try to write down your logic first before you code._ Don't just dive in hoping things will work out.
+
+The code will start to get more complex so let's divide our code up into 2 parts - Class definition & Driver Code - and let's piece it together at the very end.
+
+**Class Definition:**
 
 ```java
-// we'll loop i to go from the start everytime
-// we'll loop j to get rid of one last at the end since we already did that operation
-// within each loop, if prev array value greater than next array, then swap with temp variable method
-public class BubbleSortExample {
-    static void bubbleSort(int[] arr) {
-        int temp = 0;
-
-         for(int i=0; i < arr.length; i++){
-                 for(int j=1; j < (arr.length - i); j++){
-                          if(arr[j-1] > arr[j]){
-                                 //swap elements
-                                 temp = arr[j-1];
-                                 arr[j-1] = arr[j];
-                                 arr[j] = temp;
-                         }
-
-                 }
-         }
+public class BubbleSort {
+    public void bubbleSort(int[] arr) {
+        int temp;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 1; j < (arr.length - i); j++) {
+                if (arr[j - 1] > arr[j]) {
+                    // Swap elements
+                    temp = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
     }
 }
 ```
+
+1.  **The Setup**:
+
+    - We have a class `BubbleSort` with a method `bubbleSort` that takes an array `arr` to sort.
+
+2.  **Temporary Storage (`temp`)**:
+
+    - Integer value called `temp`.
+
+3.  **The Outer Loop (`i`)**:
+
+    - `for (int i = 0; i < arr.length; i++)` - Think of `i` as a countdown. It tracks how many elements at the end of the array are sorted.
+
+4.  **The Inner Loop (`j`)**:
+
+    - `for (int j = 1; j < (arr.length - i); j++)` - Here, `j` looks at each pair of numbers. It stops earlier each time `(arr.length - i)` because the biggest numbers are already sorted at the end.
+
+5.  **Making the Swap**:
+    - `if (arr[j - 1] > arr[j])` - If number is bigger than the next one in line, swap them.
+
+```
+To swap:
+1. Put `arr[j - 1]` in `temp`.
+2. Move `arr[j]` to `arr[j - 1]`.
+3. Move `temp` (old `arr[j - 1]`) to `arr[j]`.
+
+* You will learn to swap without the temp variable over time
+```
+
+Now that we have created our Class defintion for BubbleSort, let's see how we can utilize this function in our Driver Code.
+
+This one will be a bit more challenging because we want our output to look a certain way.
+
+Let's write our driver that was similar to our Binary Search.
+
+**Driver Code:**
+
+```java
+public static void main(String[] args) {
+     int[] arr = {3, 60, 35, 2, 45, 320, 5};
+
+     BubbleSort instance = new BubbleSort();
+     instance.bubbleSort(arr);
+     System.out.print("Bubble Sorted: [");
+     for (int i = 0; i < arr.length; i++) {
+         System.out.print(arr[i]);
+         if (i < arr.length - 1) {
+             System.out.print(", ");
+         }
+     }
+     System.out.println("]");
+}
+```
+
+1. **Creating BubbleSort Instance**:
+
+   - `BubbleSort instance = new BubbleSort();`  
+     This line creates a new `BubbleSort` object, like getting a helper for sorting.
+
+2. **Printing the Sorted Array with Commas**:
+
+   - `for (int i = 0; i < arr.length; i++) { ... }`  
+     Starts a loop to go through each element of the sorted array.
+   - Inside the loop:
+     - `System.out.print(arr[i]);`  
+       Prints the current element.
+     - `if (i < arr.length - 1) { System.out.print(", "); }`  
+       Adds a comma and space after the element if it's not the last one.
+
+3. **Closing the Array Presentation**:
+   - `System.out.println("]");`  
+     Closes the presentation with a ']' once all elements are printed.
+
+### Now let's put them together:
+
+```java
+public class BubbleSort {
+    public void bubbleSort(int[] arr) {
+        int temp;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 1; j < (arr.length - i); j++) {
+                if (arr[j - 1] > arr[j]) {
+                    // Swap elements
+                    temp = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+    }
+
+
+    public static void main(String[] args) {
+        int[] arr = {3, 60, 35, 2, 45, 320, 5};
+
+        BubbleSort instance = new BubbleSort();
+        instance.bubbleSort(arr);
+
+        System.out.print("Bubble Sorted: [");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+}
+```
+
+Output:
+
+```java
+Bubble Sorted: [2, 3, 5, 35, 45, 60, 320]
+```
+
+**Time Complexity: Bubble Sort**
+
+- **Best Case:** O(n) – Occurs when the array is already sorted. The algorithm only needs to make one pass through the array to confirm it is sorted.
+- **Worst Case:** O(n²) – In the worst case, when the array is sorted in reverse order, the algorithm performs the maximum number of comparisons and swaps.
+- **Average Case:** O(n²) – On average, Bubble Sort compares each element to others in nested loops, leading to quadratic time complexity.
+
+#### _**>> Author's Sidenote:**_
+
+_Keep in mind, I've spent a good chunk of time breaking down class definitions and driver code step by step and hopefully, you've picked up a lot along the way and NOT just by copy/pasting code._
+
+_Now, it's your turn to take the wheel a bit. I'll still be unpacking the logic, but reading and understanding the code? Consider it a personal challenge_
 
 ### **Selection Sort**
 

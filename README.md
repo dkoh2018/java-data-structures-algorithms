@@ -1000,7 +1000,8 @@ True, so swap and go to next
   ↑   ↑
   No Swap
 
-The array is now fully sorted.
+
+The array is now Bubble Sorted.
 ```
 
 Now let's see this code in action.
@@ -1160,6 +1161,91 @@ _Keep in mind, I've spent a good chunk of time breaking down class definitions a
 _Now, it's your turn to take the wheel a bit. I'll still be unpacking the logic, but reading and understanding the code? **Consider it a personal challenge**_
 
 ### **Selection Sort**
+
+```
+Initial Array of 5 numbers:
++---+---+---+---+---+
+| 7 | 1 | 4 | 2 | 3 |
++---+---+---+---+---+
+
+Now let's selection sort them.
+
+Find the minimum number in the array and swap with the first position.
+
+PASS 1 (considering the whole array):
+
+|+++++++++++++++++++|
++---+---+---+---+---+
+| 7 | 1 | 4 | 2 | 3 |
++---+---+---+---+---+
+      ↑
+   Minimum
+
+Swap with first element
++---+---+---+---+---+
+| 1 | 7 | 4 | 2 | 3 |
++---+---+---+---+---+
+  ↑   ↑
+   Swap
+
+
+PASS 2 (ignoring the first element):
+
+    |+++++++++++++++|
++---+---+---+---+---+
+| 1 | 7 | 4 | 2 | 3 |
++---+---+---+---+---+
+              ↑
+           Minimum
+
+Swap with the first element of the unsorted part
++---+---+---+---+---+
+| 1 | 2 | 4 | 7 | 3 |
++---+---+---+---+---+
+      ↑       ↑
+         Swap
+
+
+PASS 3 (ignoring the first two elements):
+
+        |+++++++++++|
++---+---+---+---+---+
+| 1 | 2 | 4 | 7 | 3 |
++---+---+---+---+---+
+                  ↑
+               Minimum
+
+Swap with the first element of the unsorted part
++---+---+---+---+---+
+| 1 | 2 | 3 | 7 | 4 |
++---+---+---+---+---+
+          ↑       ↑
+            Swap
+
+
+PASS 4 (ignoring the first three elements):
+            |+++++++|
++---+---+---+---+---+
+| 1 | 2 | 3 | 7 | 4 |
++---+---+---+---+---+
+                  ↑
+               Minimum
+
+Swap with the first element of the unsorted part
++---+---+---+---+---+
+| 1 | 2 | 3 | 4 | 7 |
++---+---+---+---+---+
+              ↑   ↑
+               Swap
+
+
+RESULT:
++---+---+---+---+---+
+| 1 | 2 | 3 | 4 | 7 |
++---+---+---+---+---+
+
+The array is now Selection Sorted.
+```
 
 ### **Insertion Sort**
 

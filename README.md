@@ -1017,7 +1017,7 @@ The code will start to get more complex so let's divide our code up into 2 parts
 
 ```java
 public class BubbleSort {
-    public void bubbleSort(int[] arr) {
+    public void sort(int[] arr) {
         int temp;
         for (int i = 0; i < arr.length; i++) {
             for (int j = 1; j < (arr.length - i); j++) {
@@ -1034,7 +1034,7 @@ public class BubbleSort {
 
 1.  **The Setup**:
 
-    - We have a class `BubbleSort` with a method `bubbleSort` that takes an array `arr` to sort.
+    - We have a class `BubbleSort` with a method `sort` that takes an array `arr` to sort.
 
 2.  **Temporary Storage (`temp`)**:
 
@@ -1073,7 +1073,7 @@ public static void main(String[] args) {
      int[] arr = {3, 60, 35, 2, 45, 320, 5};
 
      BubbleSort instance = new BubbleSort();
-     instance.bubbleSort(arr);
+     instance.sort(arr);
 
      System.out.print("Bubble Sorted: [");
      for (int i = 0; i < arr.length; i++) {
@@ -1109,7 +1109,7 @@ public static void main(String[] args) {
 
 ```java
 public class BubbleSort {
-    public void bubbleSort(int[] arr) {
+    public void sort(int[] arr) {
         int temp;
         for (int i = 0; i < arr.length; i++) {
             for (int j = 1; j < (arr.length - i); j++) {
@@ -1128,7 +1128,7 @@ public class BubbleSort {
         int[] arr = {3, 60, 35, 2, 45, 320, 5};
 
         BubbleSort instance = new BubbleSort();
-        instance.bubbleSort(arr);
+        instance.sort(arr);
 
         System.out.print("Bubble Sorted: [");
         for (int i = 0; i < arr.length; i++) {
@@ -1161,6 +1161,16 @@ _Keep in mind, I've spent a good chunk of time breaking down class definitions a
 _Now, it's your turn to take the wheel a bit. I'll still be unpacking the logic, but reading and understanding the code? **Consider it a personal challenge**_
 
 ### **Selection Sort**
+
+Selection Sort is a simple and intuitive algorithm that sorts an array by repeatedly finding the minimum element from the unsorted part and putting it at the beginning.
+
+**Key Point:**
+
+    More swap-efficient than Bubble Sort. Ideal when minimizing the number of swaps is crucial.
+
+Why Choose Selection Over Bubble:
+
+Selection Sort minimizes swaps, which can be costly, making it more preferable in scenarios where write operations are significantly more expensive than reads, such as with certain types of memory or large records in databases.
 
 ```
 Initial Array of 5 numbers:
@@ -1198,7 +1208,7 @@ PASS 2 (ignoring the first element):
               ↑
            Minimum
 
-Swap with the first element of the unsorted part
+Swap with the first element of the unsorted part and repeat...
 +---+---+---+---+---+
 | 1 | 2 | 4 | 7 | 3 |
 +---+---+---+---+---+
@@ -1215,7 +1225,6 @@ PASS 3 (ignoring the first two elements):
                   ↑
                Minimum
 
-Swap with the first element of the unsorted part
 +---+---+---+---+---+
 | 1 | 2 | 3 | 7 | 4 |
 +---+---+---+---+---+
@@ -1231,7 +1240,6 @@ PASS 4 (ignoring the first three elements):
                   ↑
                Minimum
 
-Swap with the first element of the unsorted part
 +---+---+---+---+---+
 | 1 | 2 | 3 | 4 | 7 |
 +---+---+---+---+---+
@@ -1248,6 +1256,132 @@ The array is now Selection Sorted.
 ```
 
 ### **Insertion Sort**
+
+```
+Initial Array of 5 numbers:
++---+---+---+---+---+
+| 5 | 2 | 4 | 3 | 1 |
++---+---+---+---+---+
+
+Now let's insertion sort them.
+The array is now Insertion Sorted.
+```
+
+So let's go over the logic in code:
+
+1. **The Sorting Loop**:
+
+   - Pick a `temp` value: `int temp = arr[i]`. This is our hero, moving through the array.
+   - Set `j = i - 1`. Think of `j` as temp's sidekick, always one step behind.
+   - Start from the second element (`i = 1`) because the first element alone is already 'sorted'.
+   - Use a `while` loop for the action: As long as `j` is not at the array's start (`j >= 0`) and `temp` is smaller than `arr[j]`, keep the loop going.
+
+2. **Make Room**:
+
+   - Inside the loop, if `arr[j]` is bigger than `temp`, shift `arr[j]` to the right (`arr[j + 1] = arr[j]`). This creates space for `temp`.
+   - Once `j` is less than `temp`, or at the start, exit the loop.
+
+3. **Place `temp`**:
+
+   - Put `temp` in its rightful spot: `arr[j + 1] = temp`.
+
+4. **Repeat**:
+   - Move to the next element, and repeat the process until the end of the array.
+
+**Result**: You get a neatly sorted array, with each element finding its perfect place, step by step.
+
+```java
+public class InsertionSort {
+    public void sort(int arr[]) {
+        int temp;
+        j = i - 1;
+
+        for ( i=1; i < arr.length; i++) {
+            while (j>=0 && arr[j] > temp) {
+                arr[j + 1] = arr[j]
+                j--
+            }
+        }
+        arr[j + 1] = temp
+    }
+}
+```
+
+This section will be your next challenge: Making a second function within your class definition.
+
+I don't like how we keep adjusting our code to print in a certain way in our driver code. Let's make it easier for ourselves by creating a function to print it out for us! We'll code the same way we did with our driver codes but in a function called `printArray`.
+
+1. **Start with a Bracket**:
+   - Begin the output with `"["`, setting the stage for our array elements.
+2. **Loop Through Elements**:
+   - Iterate over each element in the already sorted array.
+3. **Comma Management**:
+   - If our element is NOT the last one, we shall add a `","`
+4. **Close with a Bracket**:
+   - Once the last element is reached, conclude with `"]"`.
+
+```java
+static void PrintArray(int arr[]) {
+    System.out.print("[");
+    for (int i=0; i < arr.length; i++) {
+        System.out.print(arr[i]);
+        if (i < arr.length - 1) {
+            System.out.print(", ");
+        }
+    }
+    System.out.println("]");
+}
+```
+
+_Make sure to end with `println` and not `print` if you want to make a **new line**. You will otherwise see % at the end of your results_
+
+### Finally...time to combine it all together with our Driver Code:
+
+```java
+public class InsertionSort {
+
+    // Sort method
+    public void sort(int arr[]) {
+        for (int i = 1; i < arr.length; i++) {
+            int temp = arr[i];
+            int j = i - 1;
+
+            while (j >= 0 && arr[j] > temp) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = temp;
+        }
+    }
+
+    // Print method
+    static void PrintArray(int arr[]) {
+        System.out.print("[");
+        for (int i=0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+
+    //Driver code
+    public static void main(String args[]) {
+        int[] arr = {47, 12, 85, 32, 79, 58, 91, 21, 43, 67, 13, 28, 56, 39, 74};
+
+        InsertionSort instance = new InsertionSort();
+        instance.sort(arr);
+        PrintArray(arr);
+    }
+}
+```
+
+Output:
+
+```java
+[12, 13, 21, 28, 32, 39, 43, 47, 56, 58, 67, 74, 79, 85, 91]
+```
 
 ## **Intermediate Data Structures**
 

@@ -108,7 +108,7 @@ The JDK? That's your toolbox. It has all the tools (like a compiler and librarie
    ```
 
    - `public class HelloWorld` as the main label or title of your Java program, similar to how you name a document. It's like the cover of a book, telling you what's inside. In Java, every bit of code lives inside a class, so this is like naming your project.
-   - `public static void main(String[] arg)` is a "special tool" you are making in your Java toolkit. It's labeled `public`, meaning anyone can use it, and `static` means you can use it immediately, no special preparation needed. The void indicates it won't return anything, like a tool used for a job but not for producing a direct output.
+   - `public static void main(String[] arg)` is a "special tool" you are making in your Java toolkit. It's labeled `public`, meaning anyone can use it, and `static` means you can use it immediately, no special preparation needed. The `void` indicates it won't return anything, like a tool used for a job but not for producing a direct output.
 
 4. To run this script, either:
 
@@ -1279,6 +1279,8 @@ So let's go over the logic in code:
 2. **Make Room**:
 
    - Inside the loop, if `arr[j]` is bigger than `temp`, shift `arr[j]` to the right (`arr[j + 1] = arr[j]`). This creates space for `temp`.
+   - Decrement `j` until you can't swap anymore.
+     - `j = j - 1` can be turned into `j--` for short.
    - Once `j` is less than `temp`, or at the start, exit the loop.
 
 3. **Place `temp`**:
@@ -1293,23 +1295,22 @@ So let's go over the logic in code:
 ```java
 public class InsertionSort {
     public void sort(int arr[]) {
-        int temp;
-        j = i - 1;
+        for (int i = 1; i < arr.length; i++) {
+            int temp = arr[i];
+            int j = i - 1;
 
-        for ( i=1; i < arr.length; i++) {
-            while (j>=0 && arr[j] > temp) {
-                arr[j + 1] = arr[j]
-                j--
+            while (j >= 0 && arr[j] > temp) {
+                arr[j + 1] = arr[j];
+                j--;
             }
+            arr[j + 1] = temp;
         }
-        arr[j + 1] = temp
     }
-}
 ```
 
-This section will be your next challenge: Making a second function within your class definition.
+...And now welcome to our next challenge: **Making a second function within your class definition**.
 
-I don't like how we keep adjusting our code to print in a certain way in our driver code. Let's make it easier for ourselves by creating a function to print it out for us! We'll code the same way we did with our driver codes but in a function called `printArray`.
+Instead of repeatedly tweaking our code in the main method to print arrays in a specific format, why not streamline the process? Let's introduce a dedicated function named **`PrintArray`**. This function will handle all our array printing needs, much like we've been doing in our driver code.
 
 1. **Start with a Bracket**:
    - Begin the output with `"["`, setting the stage for our array elements.
